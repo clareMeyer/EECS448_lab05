@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href= "./style.css" />
+    <title>Delete Post</title>
+  </head>
+  <body>
+    <!--<form action="DeletePost.php" method="post">-->
+    <?php
+    $mysqli = new mysqli("mysql.eecs.ku.edu", "c111m575", "sqlPasswordClare", "c111m575");
+    $author = mysqli_query($mysqli, "SELECT author_id FROM Posts");
+      echo '<table>';
+      echo '<tr>';
+        echo '<th>' . "Author" . '</th>';
+        echo '<th>' . "Posts" . '</th>';
+        echo '<th>' . "Select to delete" . '</th>';
+      echo '</tr>';
+      $currentID = null;
+      while($row = mysqli_fetch_array($author)){
+        if($currentID != $row['author_id']){
+          echo '<tr>';
+            echo '<td>' . $row['author_id'] . '</td>';
+          echo '</tr>';
+
+          $currentID = $row['author_id'];
+          $post = mysqli_query($mysqli, "SELECT content FROM Posts WHERE author_id = '$currentID'");
+
+          while($row = mysqli_fetch_array($post)){
+            $currentPost = $row['content'];
+            $postNumber = mysqli_query($mysqli, "SELECT post_id FROM Posts WHERE content = '$currentPost'");
+            echo '<tr>';
+              echo '<td>';
+              echo '</td>';
+              echo '<td>';
+                echo $row['content'];
+              echo '</td>';
+              echo '<td>';
+                echo '<input type=checkbox name=deleteThis value= "' . $postNumber . '">' . '$postNumber' . '</input>';
+            echo '</tr>';
+          }
+        }
+      }
+      echo '</table>';
+      
+      ?>
+      <!--<input type="submit" value="View Posts">-->
+    <!--</form>-->
+  </body>
+</html>

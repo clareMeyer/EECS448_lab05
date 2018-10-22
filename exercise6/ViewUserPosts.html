@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href= "./style.css" />
+    <title>Admin Home</title>
+  </head>
+  <body>
+    <form action="ViewUserPosts.php" method="post">
+        <?php
+        $mysqli = new mysqli("mysql.eecs.ku.edu", "c111m575", "sqlPasswordClare", "c111m575");
+        $userChoices = mysqli_query($mysqli, "SELECT * FROM Users");
+
+        echo '<select name="user"><option>';
+        echo "Select an option</option>";
+
+        while($row = mysqli_fetch_array($userChoices)){
+          echo '<option value = "' . $row['user_id'] . '">' . $row['user_id'] . '</option>';
+        }
+      echo '</select>'
+      ?>
+      <input type="submit" value="View Posts">
+    </form>
+  </body>
+</html>
