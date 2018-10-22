@@ -4,7 +4,7 @@
     <title>Delete Post</title>
   </head>
   <body>
-    <!--<form action="DeletePost.php" method="post">-->
+    <form action="DeletePost.php" method="post">
     <?php
     $mysqli = new mysqli("mysql.eecs.ku.edu", "c111m575", "sqlPasswordClare", "c111m575");
     $author = mysqli_query($mysqli, "SELECT author_id FROM Posts");
@@ -26,23 +26,26 @@
 
           while($row = mysqli_fetch_array($post)){
             $currentPost = $row['content'];
-            $postNumber = mysqli_query($mysqli, "SELECT post_id FROM Posts WHERE content = '$currentPost'");
+            $postNumber = mysqli_query($mysqli, "SELECT post_id FROM Posts WHERE content == '$currentPost'");
             echo '<tr>';
               echo '<td>';
               echo '</td>';
+
               echo '<td>';
                 echo $row['content'];
               echo '</td>';
+
               echo '<td>';
-                echo '<input type=checkbox name=deleteThis value= "' . $postNumber . '">' . '$postNumber' . '</input>';
+                echo '<input type=checkbox name="check_list[]" value="' . $postNumber . '">';
+              echo '</td>';
             echo '</tr>';
           }
         }
       }
       echo '</table>';
-      
+
       ?>
-      <!--<input type="submit" value="View Posts">-->
-    <!--</form>-->
+      <input type="submit" name= "submit" value="Delete checked posts">
+    </form>
   </body>
 </html>
