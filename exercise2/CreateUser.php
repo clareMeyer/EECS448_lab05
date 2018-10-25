@@ -1,33 +1,4 @@
 <?php
-$mysqli = new mysqli("mysql.eecs.ku", "c111m575", "password", "c111m575");
-
-/* check connection */
-if ($mysqli->connect_errno) {
-    printf("Connect failed: %s\n", $mysqli->connect_error);
-    exit();
-}
-
-//this is the query that you would type into the sql database
-$query = "SELECT Name, CountryCode FROM City ORDER by ID DESC LIMIT 50,5";
-
-if ($result = $mysqli->query($query)) {
-
-    /* fetch associative array */
-    while ($row = $result->fetch_assoc()) {
-        printf ("%s (%s)\n", $row["Name"], $row["CountryCode"]);
-    }
-
-    /* free result set */
-    $result->free();
-}
-
-/* close connection */
-$mysqli->close();
-?>
-
-
-
-<?php
 /*
 CreateUser.php
 Author: Clare Meyer
