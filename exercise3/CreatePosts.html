@@ -2,19 +2,18 @@
 CreatePosts.html
 Author: Clare Meyer
 Lab: 05; Exercise: 03
-allows user to post with their username attached
+allows user to post to the database
 -->
 
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href= "./style.css" />
-    <title>Post to your database</title>
+    <title>Post to the database</title>
   </head>
   <body>
     <form action="CreatePosts.php" method="post">
-      <input class="username" type="text" placeholder="Username">
-    </br>
-      <input class="post" type="text" placeholder="Post">
+      <input name="username" type="text" placeholder="User Name" required>
+      <input name="thePost" type="text" placeholder="User post" required>
       </br>
       <input class="done" type="submit" placeholder="Submit">
     </form>

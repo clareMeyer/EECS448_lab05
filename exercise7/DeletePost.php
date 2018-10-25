@@ -16,23 +16,34 @@ delete posts that were checked in DeletePosts.html
      $numberChecked = count($_POST['check_list']);
    }
  }
+ echo '<table>';
+    echo '<tr>';
+      echo "posts selected: " . $numberChecked . '</br>';
+    echo '</tr>';
 
- echo "posts selected: " . $numberChecked . '</br>';
+   if($numberChecked != 0){
+     echo '<tr>' . "Posts to be deleted: " . '</tr>';
+     echo '<tr>';
+        echo '<th>' . "Post ID" . '</th>';
+        echo '<th>' . "Post Content" . '</th>';
+     echo '</tr>';
 
- if($numberChecked != 0){
-   echo "Posts to be deleted: " . '</br>';
-   for($i=0; $i<$numberChecked; $i++){
-     $please = $deletePosts[$i];
-     $values = "SELECT * FROM Posts WHERE content='$please'";
-     $theQuery = mysqli_query($mysqli, $values);
-     while($row = mysqli_fetch_array($theQuery)){
-       $choose[] = $row['post_id'];
-      }
-      echo "Post ID: " . $choose[$i] . " Post content: " . $deletePosts[$i] . '</br>';
-      $deleteText = "DELETE FROM Posts WHERE post_id = '$choose[$i]'";
-      $deleteQuery = mysqli_query($mysqli, $deleteText);
-      echo "Selected posts removed from the database" . '</br>';
-   }
+     for($i=0; $i<$numberChecked; $i++){
+       $please = $deletePosts[$i];
+       $values = "SELECT * FROM Posts WHERE content='$please'";
+       $theQuery = mysqli_query($mysqli, $values);
+       while($row = mysqli_fetch_array($theQuery)){
+         $choose[] = $row['post_id'];
+        }
+        echo '<tr>';
+          echo '<td>' . $choose[$i] . '</td>';
+          echo '<td>' . $deletePosts[$i] . '</td>';
+        echo '</tr>';
+        $deleteText = "DELETE FROM Posts WHERE post_id = '$choose[$i]'";
+        $deleteQuery = mysqli_query($mysqli, $deleteText);
+     }
+     echo '</table>';
+     echo "Selected posts removed from the database" . '</br>';
  }
 
   $mysqli->close($mysqli);
