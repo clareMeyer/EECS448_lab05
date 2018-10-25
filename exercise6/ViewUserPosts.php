@@ -1,3 +1,4 @@
+<style><?php include './style.css'; ?></style>
 <?php
 /*
 ViewUserPosts.php
@@ -18,6 +19,8 @@ populates dropdown table with all the users
    echo "User has no posts";
  }
  else{
+   echo "<table>";
+   echo "<tr>" . "<th>" . $userName . "</th>" . "</tr>";
    while($row = mysqli_fetch_array($userPosts)){
     echo "<tr>";
       echo "<td>";
