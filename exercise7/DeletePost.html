@@ -4,7 +4,7 @@
     <title>Delete Post</title>
   </head>
   <body>
-    <form action="DeletePost.php" method="post">
+    <form action="DeletePost.php" method="post" name="heresForm">
     <?php
     $mysqli = new mysqli("mysql.eecs.ku.edu", "c111m575", "sqlPasswordClare", "c111m575");
     $author = mysqli_query($mysqli, "SELECT author_id FROM Posts");
@@ -12,7 +12,7 @@
       echo '<tr>';
         echo '<th>' . "Author" . '</th>';
         echo '<th>' . "Posts" . '</th>';
-        echo '<th>' . "Select to delete" . '</th>';
+        echo '<th>' . "Delete?" . '</th>';
       echo '</tr>';
       $currentID = null;
       while($row = mysqli_fetch_array($author)){
@@ -36,7 +36,7 @@
               echo '</td>';
 
               echo '<td>';
-                echo '<input type=checkbox name="check_list[]" value="' . $postNumber . '">';
+                echo '<input type="checkbox" name="check_list[]" value="' . $row['content'] .'">';
               echo '</td>';
             echo '</tr>';
           }
