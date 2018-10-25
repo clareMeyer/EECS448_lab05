@@ -18,7 +18,7 @@
       while($row = mysqli_fetch_array($author)){
         if($currentID != $row['author_id']){
           echo '<tr>';
-            echo '<td>' . $row['author_id'] . '</td>';
+            echo '<td class="author">' . $row['author_id'] . '</td>';
           echo '</tr>';
 
           $currentID = $row['author_id'];
@@ -31,11 +31,11 @@
               echo '<td>';
               echo '</td>';
 
-              echo '<td>';
+              echo '<td class="post">';
                 echo $row['content'];
               echo '</td>';
 
-              echo '<td>';
+              echo '<td class="post">';
                 echo '<input type="checkbox" name="check_list[]" value="' . $row['content'] .'">';
               echo '</td>';
             echo '</tr>';
