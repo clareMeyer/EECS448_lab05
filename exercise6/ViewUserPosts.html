@@ -1,3 +1,9 @@
+<!--
+ViewUserPosts.html
+Author: Clare Meyer
+Lab: 05; Exercise: 06
+displays all of the posts of a given user in the database
+-->
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href= "./style.css" />
@@ -5,6 +11,7 @@
   </head>
   <body>
     <form action="ViewUserPosts.php" method="post">
+      <!--select a user from the database from a dropdown menu, and when submit the backend php displays a table of all of the posts from that use-->
         <?php
         $mysqli = new mysqli("mysql.eecs.ku.edu", "c111m575", "sqlPasswordClare", "c111m575");
         $userChoices = mysqli_query($mysqli, "SELECT * FROM Users");

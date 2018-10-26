@@ -27,11 +27,6 @@ else{
   //this is the query that you would type into the sql database
   $query = mysqli_query($mysqli, "INSERT INTO Users (user_id) VALUES ('$user')");
   echo "User " . $user . " added to the database";
-  /*$result = mysqli_query($mysqli, "SELECT * FROM Users");*/
-  /*while ($row = mysqli_fetch_array($result)) {
-    echo $row['user_id'];
-    echo "</br>";
-  }*/
 }
 /* close connection */
 $mysqli->close($mysqli);

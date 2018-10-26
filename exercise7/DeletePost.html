@@ -1,3 +1,9 @@
+<!--
+DeletePost.html
+Author: Clare Meyer
+Lab: 05; Exercise: 07
+deletes chosen post using checkboxes
+-->
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href= "./style.css" />
@@ -5,6 +11,7 @@
   </head>
   <body>
     <form action="DeletePost.php" method="post" name="heresForm">
+    <!--php that populates checkbox with users and all the posts for each user-->
     <?php
     $mysqli = new mysqli("mysql.eecs.ku.edu", "c111m575", "sqlPasswordClare", "c111m575");
     $author = mysqli_query($mysqli, "SELECT author_id FROM Posts");
